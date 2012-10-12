@@ -68,7 +68,7 @@ Resume playing current track.
 
 Pause playing track.
 
-### playPause(callbacl)
+### playPause(callback)
 
 Toggle play.
 
