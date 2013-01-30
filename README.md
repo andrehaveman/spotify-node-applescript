@@ -97,3 +97,15 @@ Turn volume up.
 ### volumeDown(callback)
 
 Turn volume down.
+
+### setVolume(volume, callback)
+
+Sets the volume
+
+  var spotify = require('spotify-node-applescript');
+
+  spotify.setVolume(42, function() {
+    spotify.getState(function(err, state) {
+      console.log(state.volume);
+    });
+  });
