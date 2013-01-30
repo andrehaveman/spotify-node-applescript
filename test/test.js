@@ -129,4 +129,16 @@ describe('Spotify Controller', function(){
         });
     });
 
+    it('should jump to a specific position of the song', function(done){
+        // spotify needs some time to catch up with the jump or it will
+        // simply return 0 as current player position
+        setTimeout(function(){
+            spotify.jumpTo(15, function(){
+                spotify.getState(function(err, state){
+                    expect(parseInt(state.position, 10)).to.equal(15)
+                    done();
+                });
+            });
+        }, 1100);
+    });
 });
