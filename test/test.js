@@ -99,6 +99,17 @@ describe('Spotify Controller', function(){
         });
     });
 
+    it('should set the volume', function(done){
+        spotify.setVolume(0, function(){
+            spotify.getState(function(err, state){
+                if (err) throw err;
+
+                expect(parseInt(state.volume, 10)).to.equal(0);
+                done();
+            });
+        });
+    });
+
 // Next and previous show buggy behaviour which makes testing it useless
 //	it('play next track', function(done){
 //		spotify.next(function(error, track){
