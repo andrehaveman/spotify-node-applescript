@@ -60,6 +60,16 @@ Get player status.
 		*/
 	});
 
+### jumpTo(second, callback)
+
+Jump to a specific second of the current song
+
+	var spotify = require('spotify-node-applescript');
+
+  spotify.jumpTo(15, function() {
+    console.log('Jumped 15th second of the song');
+  });
+
 ### play(callback)
 
 Resume playing current track.
