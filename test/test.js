@@ -152,4 +152,12 @@ describe('Spotify Controller', function(){
             });
         }, 1100);
     });
+
+    it('should return true when spotify is running', function(done) {
+        spotify.isRunning(function(error, isRunning) {
+            expect(error).to.be.null;
+            expect(isRunning).to.be.true;
+            done();
+        });
+    });
 });
