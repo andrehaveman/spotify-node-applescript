@@ -132,9 +132,9 @@ describe('Spotify Controller', function(){
 //	});
 
     it('play track', function(done){
-        spotify.playTrack('spotify:track:4n1ZGm3TxYmoYe1YR8cMus', function(){
+        spotify.playTrack('spotify:track:4EZz8Byhbjk0tOKFJlCgPB', function(){
             spotify.getTrack(function(error, track){
-                expect(track.name).to.equal('Desolation Row');
+                expect(track.name).to.equal('Never Gonna Give You Up - 7" Vocal Mix');
                 done();
             });
         });
