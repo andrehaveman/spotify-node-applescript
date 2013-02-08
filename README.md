@@ -119,3 +119,15 @@ spotify.setVolume(42, function() {
     });
 });
 ```
+
+### isRunning(callback)
+
+Check if Spotify is running.
+
+```javascript
+var spotify = require('spotify-node-applescript');
+
+spotify.isRunning(function(err, isRunning){
+    console.log(isRunning); // true
+});
+```
