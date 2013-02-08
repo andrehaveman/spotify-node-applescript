@@ -119,3 +119,15 @@ spotify.setVolume(42, function() {
     });
 });
 ```
+
+### getArtwork(callback)
+
+Returns the file path to the current artwork as PNG
+
+```javascript
+var spotify = require('spotify-node-applescript');
+
+spotify.getArtwork(function(err, artworkPath) {
+    console.log('Current artwork is at %s', artworkPath);
+});
+```
