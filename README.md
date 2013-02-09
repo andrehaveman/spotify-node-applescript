@@ -134,7 +134,7 @@ spotify.isRunning(function(err, isRunning){
 
 ### getArtwork(callback)
 
-Returns the file path to the current artwork as PNG
+Returns the file path to the current artwork as PNG. The PNG files are cached in `~/Library/Caches/TemporaryItems`.
 
 ```javascript
 var spotify = require('spotify-node-applescript');
