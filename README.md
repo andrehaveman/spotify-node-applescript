@@ -120,6 +120,14 @@ spotify.setVolume(42, function() {
 });
 ```
 
+### mute(callback)
+
+Reduces audio to 0, saving the previous volume.
+
+### unmute(callback)
+
+Returns audio to original volume.
+
 ### isRunning(callback)
 
 Check if Spotify is running.
