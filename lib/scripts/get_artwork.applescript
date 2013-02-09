@@ -1,6 +1,15 @@
+on replace_chars(this_text, search_string, replacement_string)
+  set AppleScript's text item delimiters to the search_string
+  set the item_list to every text item of this_text
+  set AppleScript's text item delimiters to the replacement_string
+  set this_text to the item_list as string
+  set AppleScript's text item delimiters to ""
+  return this_text
+end replace_chars
+
 tell application "Spotify"
   set currentArtwork to current track's artwork
-  set savePath to POSIX path of (path to temporary items from user domain as string) & current track's id
+  set savePath to POSIX path of (path to temporary items from user domain as string) & my replace_chars(current track's id,":","_")
   set tiffPath to (savePath & ".tiff")
   set pngPath to (savePath & ".png")
 end tell

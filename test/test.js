@@ -166,7 +166,7 @@ describe('Spotify Controller', function(){
             if (err) throw err;
 
             var fileName = path.split('/').splice(-1)[0];
-            expect(fileName).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc.png');
+            expect(fileName).to.equal('spotify_track_3AhXZa8sUQht0UEdBJgpGc.png');
             done();
         });
     });
