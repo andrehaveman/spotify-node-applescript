@@ -110,6 +110,30 @@ describe('Spotify Controller', function(){
         });
     });
 
+    it('should mute and unmute the volume', function(done){
+        spotify.setVolume(50, function(){
+            spotify.muteVolume(function(err, state){
+                spotify.getState(function(err, state){
+                    if (err) throw err;
+
+                    // volume now should be 0
+                    expect(parseInt(state.volume, 10)).to.equal(0);
+
+                    spotify.unmuteVolume(function(err, state){
+                        spotify.getState(function(err, state){
+                            if (err) throw err;
+
+                            // volume now should be 50 again
+                            // but spotify won't set volume exactly, so test if volume is within a range
+                            expect(parseInt(state.volume, 10)).to.be.within(45, 55);
+                            done();
+                        });
+                    });
+                });
+            });
+        });
+    });
+
 // Next and previous show buggy behaviour which makes testing it useless
 //	it('play next track', function(done){
 //		spotify.next(function(error, track){
