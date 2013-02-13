@@ -5,6 +5,10 @@ Control Spotify on Mac OSX with NodeJS and AppleScript.
 
 	npm install spotify-node-applescript
 
+## Running unit tests
+
+    npm test
+
 ## API
 
 ### playTrack(uri, callback)
