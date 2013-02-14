@@ -81,7 +81,7 @@ describe('Spotify Controller', function(){
         setTimeout(function(){
             spotify.jumpTo(15, function(){
                 spotify.getState(function(err, state){
-                    expect(parseInt(state.position, 10)).to.equal(15)
+                    expect(Math.floor(state.position)).to.equal(15)
                     done();
                 });
             });
@@ -201,7 +201,7 @@ describe('Spotify Controller', function(){
         spotify.getState(function(error, state){
             expect(state.state).to.equal('playing');
             expect(state.volume).to.be.a('number');
-            expect(state.position).to.be.a('string');
+            expect(state.position).to.be.a('number');
             expect(state.track_id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
 
             done();
