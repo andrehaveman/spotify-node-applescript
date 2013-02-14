@@ -20,20 +20,18 @@ describe('Spotify Controller', function(){
         });
     });
 
-    it('should return playing track', function(done){
-        spotify.getTrack(function(error, track){
-            expect(track.artist).to.equal('Bob Dylan');
-            expect(track.name).to.equal('Like A Rolling Stone');
-            done();
+    // Open and get track
+
+    it('play track', function(done){
+        spotify.playTrack('spotify:track:4EZz8Byhbjk0tOKFJlCgPB', function(){
+            spotify.getTrack(function(error, track){
+                expect(track.name).to.equal('Never Gonna Give You Up - 7" Vocal Mix');
+                done();
+            });
         });
     });
 
-    it('should return player status', function(done){
-        spotify.getState(function(error, state){
-            expect(state.state).to.equal('playing');
-            done();
-        });
-    });
+    // Playback control
 
     it('should pause a track', function(done){
         spotify.pause(function(){
@@ -68,6 +66,50 @@ describe('Spotify Controller', function(){
             });
         });
     });
+
+    it('should return playing track', function(done){
+        spotify.getTrack(function(error, track){
+            expect(track.artist).to.equal('Bob Dylan');
+            expect(track.name).to.equal('Like A Rolling Stone');
+            done();
+        });
+    });
+
+    it('should jump to a specific position of the song', function(done){
+        // spotify needs some time to catch up with the jump or it will
+        // simply return 0 as current player position
+        setTimeout(function(){
+            spotify.jumpTo(15, function(){
+                spotify.getState(function(err, state){
+                    expect(parseInt(state.position, 10)).to.equal(15)
+                    done();
+                });
+            });
+        }, 1100);
+    });
+
+// Next and previous show buggy behaviour which makes testing it useless
+//	it('play next track', function(done){
+//		spotify.next(function(error, track){
+//			spotify.getTrack(function(error, track){
+//                console.log('>',track.name);
+//                expect(track.name).to.not.equal('Like A Rolling Stone');
+//				done();
+//			});
+//		});
+//	});
+//
+//	it('play previous track', function(done){
+//		spotify.previous(function(error, track){
+//			spotify.getTrack(function(error, track){
+//                console.log('>',track.name);
+//				expect(track.name).to.equal('Like A Rolling Stone');
+//				done();
+//			});
+//		});
+//	});
+
+    // Volumen control
 
     it('should turn volume up', function(done){
         // first do volumeDown in case volume is already 100
@@ -134,47 +176,13 @@ describe('Spotify Controller', function(){
         });
     });
 
-// Next and previous show buggy behaviour which makes testing it useless
-//	it('play next track', function(done){
-//		spotify.next(function(error, track){
-//			spotify.getTrack(function(error, track){
-//                console.log('>',track.name);
-//                expect(track.name).to.not.equal('Like A Rolling Stone');
-//				done();
-//			});
-//		});
-//	});
-//
-//	it('play previous track', function(done){
-//		spotify.previous(function(error, track){
-//			spotify.getTrack(function(error, track){
-//                console.log('>',track.name);
-//				expect(track.name).to.equal('Like A Rolling Stone');
-//				done();
-//			});
-//		});
-//	});
+    // State retrieval
 
-    it('play track', function(done){
-        spotify.playTrack('spotify:track:4EZz8Byhbjk0tOKFJlCgPB', function(){
-            spotify.getTrack(function(error, track){
-                expect(track.name).to.equal('Never Gonna Give You Up - 7" Vocal Mix');
-                done();
-            });
+    it('should return player status', function(done){
+        spotify.getState(function(error, state){
+            expect(state.state).to.equal('playing');
+            done();
         });
-    });
-
-    it('should jump to a specific position of the song', function(done){
-        // spotify needs some time to catch up with the jump or it will
-        // simply return 0 as current player position
-        setTimeout(function(){
-            spotify.jumpTo(15, function(){
-                spotify.getState(function(err, state){
-                    expect(parseInt(state.position, 10)).to.equal(15)
-                    done();
-                });
-            });
-        }, 1100);
     });
 
     it('should return true when spotify is running', function(done) {
