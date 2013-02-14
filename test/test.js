@@ -1,4 +1,3 @@
-
 var spotify = require('../lib/spotify-node-applescript.js');
 var expect = require('chai').expect;
 
@@ -81,7 +80,7 @@ describe('Spotify Controller', function(){
         setTimeout(function(){
             spotify.jumpTo(15, function(){
                 spotify.getState(function(err, state){
-                    expect(Math.floor(state.position)).to.equal(15)
+                    expect(Math.floor(state.position)).to.equal(15);
                     done();
                 });
             });
@@ -115,10 +114,10 @@ describe('Spotify Controller', function(){
         // first do volumeDown in case volume is already 100
         spotify.volumeDown(function(){
             spotify.getState(function(error, state){
-                var volume = parseInt(state.volume);
+                var volume = state.volume;
                 spotify.volumeUp(function(){
                     spotify.getState(function(error, state){
-                        expect(parseInt(state.volume)).to.be.greaterThan(volume);
+                        expect(state.volume).to.be.greaterThan(volume);
                         done();
                     });
                 });
@@ -130,10 +129,10 @@ describe('Spotify Controller', function(){
         // first do volumeUp in case volume is already 0
         spotify.volumeUp(function(){
             spotify.getState(function(error, state){
-                var volume = parseInt(state.volume);
+                var volume = state.volume;
                 spotify.volumeDown(function(){
                     spotify.getState(function(error, state){
-                        expect(parseInt(state.volume)).to.be.lessThan(volume);
+                        expect(state.volume).to.be.lessThan(volume);
                         done();
                     });
                 });
@@ -146,7 +145,7 @@ describe('Spotify Controller', function(){
             spotify.getState(function(err, state){
                 if (err) throw err;
 
-                expect(parseInt(state.volume, 10)).to.equal(0);
+                expect(state.volume).to.equal(0);
                 done();
             });
         });
@@ -159,7 +158,7 @@ describe('Spotify Controller', function(){
                     if (err) throw err;
 
                     // volume now should be 0
-                    expect(parseInt(state.volume, 10)).to.equal(0);
+                    expect(state.volume).to.equal(0);
 
                     spotify.unmuteVolume(function(err, state){
                         spotify.getState(function(err, state){
@@ -167,7 +166,7 @@ describe('Spotify Controller', function(){
 
                             // volume now should be 50 again
                             // but spotify won't set volume exactly, so test if volume is within a range
-                            expect(parseInt(state.volume, 10)).to.be.within(45, 55);
+                            expect(state.volume).to.be.within(45, 55);
                             done();
                         });
                     });
