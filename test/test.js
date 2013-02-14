@@ -178,9 +178,32 @@ describe('Spotify Controller', function(){
 
     // State retrieval
 
+    it('should return current track', function(done){
+        spotify.getTrack(function(error, track){
+            expect(track.name).to.equal('Like A Rolling Stone');
+            expect(track.artist).to.equal('Bob Dylan');
+            expect(track.album).to.equal('Highway 61 Revisited');
+            expect(track.disc_number).to.equal(1);
+            expect(track.duration).to.be.a('number');
+            expect(track.played_count).to.be.a('number');
+            expect(track.track_number).to.equal(1);
+            expect(track.starred).to.be.a('boolean');
+            expect(track.popularity).to.be.a('number');
+            expect(track.id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
+            expect(track.album_artist).to.equal('Bob Dylan');
+            expect(track.spotify_url).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
+
+            done();
+        });
+    });
+
     it('should return player status', function(done){
         spotify.getState(function(error, state){
             expect(state.state).to.equal('playing');
+            expect(state.volume).to.be.a('number');
+            expect(state.position).to.be.a('string');
+            expect(state.track_id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
+
             done();
         });
     });
