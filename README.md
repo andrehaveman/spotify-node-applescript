@@ -63,7 +63,7 @@ spotify.getState(function(err, state){
     /*
     state = {
         volume: 99,
-        position: '232.639999389648',
+        position: 232.639999389648,
         state: 'playing'
     }
     */
