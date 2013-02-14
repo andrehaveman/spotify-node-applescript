@@ -3,11 +3,15 @@ Control Spotify on Mac OSX with NodeJS and AppleScript.
 
 ## Installation
 
-	npm install spotify-node-applescript
+```
+$ npm install spotify-node-applescript
+```
 
 ## Running unit tests
 
-    npm test
+```
+$ npm test
+```
 
 ## API
 
@@ -155,3 +159,13 @@ spotify.getArtwork(function(err, artworkPath) {
     console.log('Current artwork is at %s', artworkPath);
 });
 ```
+
+## Contributors
+
+* [Robin Mehner](https://github.com/rmehner)
+* [Thorsten Ball](https://github.com/mrnugget)
+* [Paul Marbach](https://github.com/fastfrwrd)
+
+## License
+
+[MIT](LICENSE)
