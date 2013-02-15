@@ -80,7 +80,7 @@ describe('Spotify Controller', function(){
         setTimeout(function(){
             spotify.jumpTo(15, function(){
                 spotify.getState(function(err, state){
-                    expect(Math.floor(state.position)).to.equal(15);
+                    expect(state.position).to.equal(15);
                     done();
                 });
             });
