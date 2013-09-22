@@ -56,9 +56,9 @@ spotify.getTrack(function(err, track){
 });
 ```
 
-### getStatus(callback)
+### getState(callback)
 
-Get player status.
+Get player state.
 
 ```javascript
 var spotify = require('spotify-node-applescript');
