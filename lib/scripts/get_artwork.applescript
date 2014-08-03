@@ -13,7 +13,7 @@ end file_exists
 
 tell application "Spotify"
   set currentArtwork to current track's artwork
-  set savePath to POSIX path of (path to temporary items from user domain as string) & my replace_chars(current track's id,":","_")
+  set savePath to POSIX path of (path to temporary items from user domain as string) & my replace_chars(current track's id, ":", "_")
   set tiffPath to (savePath & ".tiff")
   set pngPath to (savePath & ".png")
 end tell
@@ -21,21 +21,16 @@ end tell
 -- don't do the image events dance when the file already exists
 if my file_exists(pngPath) then return pngPath
 
-tell application "System Events"
-  if not (my file_exists(tiffPath)) then
-    set fileRef to (open for access tiffPath with write permission)
-    write currentArtwork to fileRef
-    close access fileRef
-  end
+if not (my file_exists(tiffPath)) then
+  set fileRef to (open for access tiffPath with write permission)
+  write currentArtwork to fileRef
+  close access fileRef
+end if
 
-  tell application "Image Events"
-    launch
-    set theImage to open tiffPath
-    save theImage as PNG in pngPath
-    quit
-  end tell
-
-  delete file tiffPath
+tell application "Image Events"
+  launch
+  set theImage to open tiffPath
+  save theImage as PNG in pngPath
   quit
 end tell
 
