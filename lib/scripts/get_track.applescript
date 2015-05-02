@@ -15,7 +15,6 @@ tell application "Spotify"
   set ctrack to ctrack & ",\"duration\": " & current track's duration
   set ctrack to ctrack & ",\"played_count\": " & current track's played count
   set ctrack to ctrack & ",\"track_number\": " & current track's track number
-  set ctrack to ctrack & ",\"starred\": " & current track's starred
   set ctrack to ctrack & ",\"popularity\": " & current track's popularity
   set ctrack to ctrack & ",\"id\": \"" & current track's id & "\""
   set ctrack to ctrack & ",\"name\": \"" & my escape_quotes(current track's name) & "\""
