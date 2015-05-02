@@ -21,20 +21,16 @@ end tell
 -- don't do the image events dance when the file already exists
 if my file_exists(pngPath) then return pngPath
 
-tell application "System Events"
-  if not (my file_exists(tiffPath)) then
-    set fileRef to (open for access tiffPath with write permission)
-    write currentArtwork to fileRef
-    close access fileRef
-  end
+if not (my file_exists(tiffPath)) then
+  set fileRef to (open for access tiffPath with write permission)
+  write currentArtwork to fileRef
+  close access fileRef
+end
 
-  tell application "Image Events"
-    launch
-    set theImage to open tiffPath
-    save theImage as PNG in pngPath
-    quit
-  end tell
-
+tell application "Image Events"
+  launch
+  set theImage to open tiffPath
+  save theImage as PNG in pngPath
   delete file tiffPath
   quit
 end tell
