@@ -19,11 +19,11 @@
   },
   "main": "./lib/spotify-node-applescript.js",
   "dependencies": {
-    "applescript": "0.2.x"
+    "applescript": "1.0.0"
   },
   "devDependencies": {
-    "chai": "1.0.x",
-    "mocha": "1.0.x"
+    "chai": "2.3.x",
+    "mocha": "2.2.x"
   },
   "scripts": {
     "test": "mocha"
