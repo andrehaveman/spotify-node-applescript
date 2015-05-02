@@ -128,11 +128,11 @@ spotify.setVolume(42, function() {
 });
 ```
 
-### mute(callback)
+### muteVolume(callback)
 
 Reduces audio to 0, saving the previous volume.
 
-### unmute(callback)
+### unmuteVolume(callback)
 
 Returns audio to original volume.
 
