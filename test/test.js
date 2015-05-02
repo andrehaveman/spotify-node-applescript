@@ -24,7 +24,7 @@ describe('Spotify Controller', function(){
     it('play track', function(done){
         spotify.playTrack('spotify:track:4EZz8Byhbjk0tOKFJlCgPB', function(){
             spotify.getTrack(function(error, track){
-                expect(track.name).to.equal('Never Gonna Give You Up - 7" Vocal Mix');
+                expect(track.name).to.equal('Never Gonna Give You Up - 7" Mix');
                 done();
             });
         });
@@ -69,7 +69,7 @@ describe('Spotify Controller', function(){
     it('should return playing track', function(done){
         spotify.getTrack(function(error, track){
             expect(track.artist).to.equal('Bob Dylan');
-            expect(track.name).to.equal('Like A Rolling Stone');
+            expect(track.name).to.equal('Like a Rolling Stone');
             done();
         });
     });
@@ -179,14 +179,13 @@ describe('Spotify Controller', function(){
 
     it('should return current track', function(done){
         spotify.getTrack(function(error, track){
-            expect(track.name).to.equal('Like A Rolling Stone');
+            expect(track.name).to.equal('Like a Rolling Stone');
             expect(track.artist).to.equal('Bob Dylan');
             expect(track.album).to.equal('Highway 61 Revisited');
             expect(track.disc_number).to.equal(1);
             expect(track.duration).to.be.a('number');
             expect(track.played_count).to.be.a('number');
             expect(track.track_number).to.equal(1);
-            expect(track.starred).to.be.a('boolean');
             expect(track.popularity).to.be.a('number');
             expect(track.id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
             expect(track.album_artist).to.equal('Bob Dylan');
