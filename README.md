@@ -17,13 +17,25 @@ $ npm test
 
 ### playTrack(uri, callback)
 
-Open track with Spotify URI `uri`.
+Play a track with Spotify URI `uri`.
 
 ```javascript
 var spotify = require('spotify-node-applescript');
 
 spotify.playTrack('spotify:track:3AhXZa8sUQht0UEdBJgpGc', function(){
     // track is playing
+});
+```
+
+### playTrackInContext(uri, contextUri, callback)
+
+Play a track in context of for example an album.
+
+```javascript
+var spotify = require('spotify-node-applescript');
+
+spotify.playTrackInContext('spotify:track:0R8P9KfGJCDULmlEoBagcO', 'spotify:album:6ZG5lRT77aJ3btmArcykra', function(){
+    // Track is playing in context of an album
 });
 ```
 
@@ -145,18 +157,6 @@ var spotify = require('spotify-node-applescript');
 
 spotify.isRunning(function(err, isRunning){
     console.log(isRunning); // true
-});
-```
-
-### getArtwork(callback)
-
-Returns the file path to the current artwork as PNG. The PNG files are cached in `~/Library/Caches/TemporaryItems`.
-
-```javascript
-var spotify = require('spotify-node-applescript');
-
-spotify.getArtwork(function(err, artworkPath) {
-    console.log('Current artwork is at %s', artworkPath);
 });
 ```
 
