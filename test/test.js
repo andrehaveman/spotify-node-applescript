@@ -8,7 +8,7 @@ describe('Spotify Controller', function(){
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     beforeEach(function(done){
-        spotify.playTrack('spotify:track:3AhXZa8sUQht0UEdBJgpGc', function(){
+        spotify.playTrackInContext('spotify:track:0R8P9KfGJCDULmlEoBagcO', 'spotify:album:6ZG5lRT77aJ3btmArcykra', function(){
             done();
         });
     });
@@ -22,9 +22,9 @@ describe('Spotify Controller', function(){
     // Open and get track
 
     it('play track', function(done){
-        spotify.playTrack('spotify:track:4EZz8Byhbjk0tOKFJlCgPB', function(){
+        spotify.playTrack('spotify:track:6JEK0CvvjDjjMUBFoXShNZ', function(){
             spotify.getTrack(function(error, track){
-                expect(track.name).to.equal('Never Gonna Give You Up - 7" Mix');
+                expect(track.name).to.equal('Never Gonna Give You Up');
                 done();
             });
         });
@@ -68,8 +68,8 @@ describe('Spotify Controller', function(){
 
     it('should return playing track', function(done){
         spotify.getTrack(function(error, track){
-            expect(track.artist).to.equal('Bob Dylan');
-            expect(track.name).to.equal('Like a Rolling Stone');
+            expect(track.artist).to.equal('Coldplay');
+            expect(track.name).to.equal('Trouble');
             done();
         });
     });
@@ -87,26 +87,23 @@ describe('Spotify Controller', function(){
         }, 1100);
     });
 
-// Next and previous show buggy behaviour which makes testing it useless
-//	it('play next track', function(done){
-//		spotify.next(function(error, track){
-//			spotify.getTrack(function(error, track){
-//                console.log('>',track.name);
-//                expect(track.name).to.not.equal('Like A Rolling Stone');
-//				done();
-//			});
-//		});
-//	});
-//
-//	it('play previous track', function(done){
-//		spotify.previous(function(error, track){
-//			spotify.getTrack(function(error, track){
-//                console.log('>',track.name);
-//				expect(track.name).to.equal('Like A Rolling Stone');
-//				done();
-//			});
-//		});
-//	});
+ 	it('play next track', function(done){
+		spotify.next(function(error, track){
+			spotify.getTrack(function(error, track){
+                expect(track.name).to.equal('Parachutes');
+				done();
+			});
+		});
+	});
+
+	it('play previous track', function(done){
+		spotify.previous(function(error, track){
+			spotify.getTrack(function(error, track){
+				expect(track.name).to.equal('Yellow');
+				done();
+			});
+		});
+	});
 
     // Volumen control
 
@@ -179,17 +176,17 @@ describe('Spotify Controller', function(){
 
     it('should return current track', function(done){
         spotify.getTrack(function(error, track){
-            expect(track.name).to.equal('Like a Rolling Stone');
-            expect(track.artist).to.equal('Bob Dylan');
-            expect(track.album).to.equal('Highway 61 Revisited');
+            expect(track.name).to.equal('Trouble');
+            expect(track.artist).to.equal('Coldplay');
+            expect(track.album).to.equal('Parachutes');
             expect(track.disc_number).to.equal(1);
             expect(track.duration).to.be.a('number');
             expect(track.played_count).to.be.a('number');
-            expect(track.track_number).to.equal(1);
+            expect(track.track_number).to.equal(6);
             expect(track.popularity).to.be.a('number');
-            expect(track.id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
-            expect(track.album_artist).to.equal('Bob Dylan');
-            expect(track.spotify_url).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
+            expect(track.id).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
+            expect(track.album_artist).to.equal('Coldplay');
+            expect(track.spotify_url).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
 
             done();
         });
@@ -200,7 +197,7 @@ describe('Spotify Controller', function(){
             expect(state.state).to.equal('playing');
             expect(state.volume).to.be.a('number');
             expect(state.position).to.be.a('number');
-            expect(state.track_id).to.equal('spotify:track:3AhXZa8sUQht0UEdBJgpGc');
+            expect(state.track_id).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
 
             done();
         });
