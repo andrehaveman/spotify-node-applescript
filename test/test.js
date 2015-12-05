@@ -211,6 +211,76 @@ describe('Spotify Controller', function(){
         });
     });
 
+    it('should set the repeating to false', function(done){
+        spotify.setRepeating(false, function(){
+            spotify.isRepeating(function(err, repeating){
+                if (err) throw err;
+
+                expect(repeating).to.equal(false);
+                done();
+            });
+        });
+    });
+
+    it('should set the repeating to true', function(done){
+        spotify.setRepeating(true, function(){
+            spotify.isRepeating(function(err, repeating){
+                if (err) throw err;
+
+                expect(repeating).to.equal(true);
+                done();
+            });
+        });
+    });
+
+    it('should set the shuffling to false', function(done){
+        spotify.setShuffling(false, function(){
+            spotify.isShuffling(function(err, shuffling){
+                if (err) throw err;
+
+                expect(shuffling).to.equal(false);
+                done();
+            });
+        });
+    });
+
+    it('should set the shuffling to true', function(done){
+        spotify.setShuffling(true, function(){
+            spotify.isShuffling(function(err, shuffling){
+                if (err) throw err;
+
+                expect(shuffling).to.equal(true);
+                done();
+            });
+        });
+    });
+
+    it('should toggle the repeating', function(done){
+        spotify.setRepeating(false, function(){
+            spotify.toggleRepeating(function(err){
+                spotify.isRepeating(function(err, repeating){
+                    if (err) throw err;
+
+                    expect(repeating).to.equal(true);
+                    done();
+                });
+            })
+        });
+    });
+
+    it('should toggle the shuffling', function(done){
+        spotify.setShuffling(false, function(){
+            spotify.toggleShuffling(function(err){
+                spotify.isShuffling(function(err, shuffling){
+                    if (err) throw err;
+
+                    expect(shuffling).to.equal(true);
+                    done();
+                });
+            })
+        });
+    });
+
     /*it('should return the path to the PNG of the current artwork', function(done){
         spotify.getArtwork(function(err, path){
             if (err) throw err;
