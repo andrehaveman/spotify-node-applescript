@@ -160,6 +160,37 @@ spotify.isRunning(function(err, isRunning){
 });
 ```
 
+### isRepeating(callback)
+Is repeating on or off?
+```js
+var spotify = require('spotify-node-applescript');
+
+spotify.isShuffling(function(err, shuffling){
+    console.log(shuffling); // true || false
+});
+```
+
+### isShuffling(callback)
+Is shuffling on or off?
+```js
+var spotify = require('spotify-node-applescript');
+
+spotify.isShuffling(function(err, shuffling){
+    console.log(shuffling); // true || false
+});
+```
+### setRepeating(repeating/\**boolean*\*/, callback)
+Sets repeating on or off
+
+### setShuffling(shuffling/\**boolean*\*/, callback)
+Sets shuffling on or off
+
+### toggleRepeating(callback)
+Toggles repeating
+
+### toggleShuffling(callback)
+Toggles shuffling
+
 ## Contributors
 
 * [Robin Mehner](https://github.com/rmehner)
