@@ -17,6 +17,8 @@ describe('Spotify Controller', function(){
         spotify.pause(function(){
             done();
         });
+        spotify.setRepeating(false);
+        spotify.setShuffling(false);
     });
 
     // Open and get track
