@@ -165,7 +165,7 @@ Is repeating on or off?
 ```js
 var spotify = require('spotify-node-applescript');
 
-spotify.isShuffling(function(err, shuffling){
+spotify.isRepeating(function(err, shuffling){
     console.log(shuffling); // true || false
 });
 ```
