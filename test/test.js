@@ -188,6 +188,7 @@ describe('Spotify Controller', function(){
             expect(track.popularity).to.be.a('number');
             expect(track.id).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
             expect(track.album_artist).to.equal('Coldplay');
+            expect(track.artwork_url).to.equal('http://images.spotify.com/image/495b0549379fc4c324445fd7d2bfa219a8c18a90');
             expect(track.spotify_url).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
 
             done();
