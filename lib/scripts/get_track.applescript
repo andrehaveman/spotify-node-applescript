@@ -19,6 +19,7 @@ tell application "Spotify"
   set ctrack to ctrack & ",\"id\": \"" & current track's id & "\""
   set ctrack to ctrack & ",\"name\": \"" & my escape_quotes(current track's name) & "\""
   set ctrack to ctrack & ",\"album_artist\": \"" & my escape_quotes(current track's album artist) & "\""
+  set ctrack to ctrack & ",\"artwork_url\": \"" & current track's artwork url & "\""
   set ctrack to ctrack & ",\"spotify_url\": \"" & current track's spotify url & "\""
   set ctrack to ctrack & "}"
 end tell
