@@ -1,3 +1,7 @@
+# 1.1.0 (2017-05-03)
+
+- Added artwork_url to track data.
+
 # 1.0.0 (2016-05-11)
 
 ## Breaking changes
