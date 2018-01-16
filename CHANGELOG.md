@@ -1,3 +1,7 @@
+# 1.1.1 (2018-01-16)
+
+- Fixed volume overflow issue.
+
 # 1.1.0 (2017-05-03)
 
 - Added artwork_url to track data.
