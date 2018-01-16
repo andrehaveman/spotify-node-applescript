@@ -1,7 +1,7 @@
- tell application "Spotify"
-   if repeating then
-     set repeating to false
-   else
-     set repeating to true
-   end if
- end tell
+tell application "Spotify"
+  if repeating then
+    set repeating to false
+  else
+    set repeating to true
+  end if
+end tell
