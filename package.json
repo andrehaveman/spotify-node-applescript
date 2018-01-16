@@ -1,6 +1,6 @@
 {
   "name": "spotify-node-applescript",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Control Spotify on Mac OSX with NodeJS and AppleScript.",
   "keywords": [
     "spotify",
