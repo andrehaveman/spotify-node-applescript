@@ -139,6 +139,36 @@ describe('Spotify Controller', function(){
         });
     });
 
+    it('should not overflow on volume up', function(done){
+        // first do setVolume to emulate overflow when volume up
+        spotify.setVolume(95, function(){
+            spotify.getState(function(error, state){
+                var volume = state.volume;
+                spotify.volumeUp(function(){
+                    spotify.getState(function(error, state){
+                        expect(state.volume).to.be.greaterThan(volume);
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
+    it('should not overflow on volume down', function(done){
+        // first do setVolume to emulate overflow when volume down
+        spotify.setVolume(5, function(){
+            spotify.getState(function(error, state){
+                var volume = state.volume;
+                spotify.volumeDown(function(){
+                    spotify.getState(function(error, state){
+                        expect(state.volume).to.be.lessThan(volume);
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
     it('should set the volume', function(done){
         spotify.setVolume(0, function(){
             spotify.getState(function(err, state){
