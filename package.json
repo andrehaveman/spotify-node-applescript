@@ -18,6 +18,7 @@
     "node": ">=0.6.0"
   },
   "main": "./lib/spotify-node-applescript.js",
+  "types": "index.d.ts",
   "dependencies": {
     "applescript": "1.0.0"
   },
