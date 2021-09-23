@@ -275,7 +275,10 @@ describe('Spotify Controller', function () {
             expect(track.popularity).to.be.a('number');
             expect(track.id).to.equal(COLDPLAY_TROUBLE_ID);
             expect(track.album_artist).to.equal('Coldplay');
-            expect(track.artwork_url).to.contain('image/495b0549379fc4c324445fd7d2bfa219a8c18a90');
+            expect(track.artwork_url).to.satisfy(function (url) {
+                return url.endsWith('image/ab67616d0000b2733d92b2ad5af9fbc8637425f0')
+                    || url.endsWith('image/495b0549379fc4c324445fd7d2bfa219a8c18a90')
+            })
             expect(track.spotify_url).to.equal('spotify:track:0R8P9KfGJCDULmlEoBagcO');
 
             done();
