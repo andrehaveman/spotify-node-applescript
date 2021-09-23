@@ -102,6 +102,30 @@ spotify.jumpTo(15, function () {
 });
 ```
 
+### seekForward(second, callback)
+
+Seek forward for the given seconds in the current song.
+
+```javascript
+var spotify = require("spotify-node-applescript");
+
+spotify.seekForward(5, function () {
+  console.log("Seeked forward for 5 seconds in the current song");
+});
+```
+
+### seekBackward(second, callback)
+
+Seek backward for the given seconds in the current song.
+
+```javascript
+var spotify = require("spotify-node-applescript");
+
+spotify.seekBackward(5, function () {
+  console.log("Seeked backward for 5 seconds in the current song");
+});
+```
+
 ### play(callback)
 
 Resume playing current track.
@@ -209,6 +233,7 @@ Toggles shuffling
 - [Robin Mehner](https://github.com/rmehner)
 - [Thorsten Ball](https://github.com/mrnugget)
 - [Paul Marbach](https://github.com/fastfrwrd)
+- [dyong1](https://github.com/dyong1)
 
 ## License
 
