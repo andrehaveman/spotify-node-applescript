@@ -1,4 +1,5 @@
 # spotify-node-applescript
+
 Control Spotify on Mac OSX with NodeJS and AppleScript.
 
 ## Installation
@@ -20,10 +21,10 @@ $ npm test
 Play a track with Spotify URI `uri`.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.playTrack('spotify:track:3AhXZa8sUQht0UEdBJgpGc', function(){
-    // track is playing
+spotify.playTrack("spotify:track:3AhXZa8sUQht0UEdBJgpGc", function () {
+  // track is playing
 });
 ```
 
@@ -32,11 +33,15 @@ spotify.playTrack('spotify:track:3AhXZa8sUQht0UEdBJgpGc', function(){
 Play a track in context of for example an album.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.playTrackInContext('spotify:track:0R8P9KfGJCDULmlEoBagcO', 'spotify:album:6ZG5lRT77aJ3btmArcykra', function(){
+spotify.playTrackInContext(
+  "spotify:track:0R8P9KfGJCDULmlEoBagcO",
+  "spotify:album:6ZG5lRT77aJ3btmArcykra",
+  function () {
     // Track is playing in context of an album
-});
+  }
+);
 ```
 
 ### getTrack(callback)
@@ -44,11 +49,10 @@ spotify.playTrackInContext('spotify:track:0R8P9KfGJCDULmlEoBagcO', 'spotify:albu
 Get the current track. `callback` is called with the current track as second argument.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.getTrack(function(err, track){
-
-    /*
+spotify.getTrack(function (err, track) {
+  /*
     track = {
         artist: 'Bob Dylan',
         album: 'Highway 61 Revisited',
@@ -65,7 +69,6 @@ spotify.getTrack(function(err, track){
         spotify_url: 'spotify:track:3AhXZa8sUQht0UEdBJgpGc' }
     }
     */
-
 });
 ```
 
@@ -74,10 +77,10 @@ spotify.getTrack(function(err, track){
 Get player state.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.getState(function(err, state){
-    /*
+spotify.getState(function (err, state) {
+  /*
     state = {
         volume: 99,
         position: 232,
@@ -92,10 +95,10 @@ spotify.getState(function(err, state){
 Jump to a specific second of the current song.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.jumpTo(15, function() {
-    console.log('Jumped 15th second of the song');
+spotify.jumpTo(15, function () {
+  console.log("Jumped 15th second of the song");
 });
 ```
 
@@ -132,12 +135,12 @@ Turn volume down.
 Sets the volume.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.setVolume(42, function() {
-    spotify.getState(function(err, state) {
-        console.log(state.volume);
-    });
+spotify.setVolume(42, function () {
+  spotify.getState(function (err, state) {
+    console.log(state.volume);
+  });
 });
 ```
 
@@ -154,49 +157,58 @@ Returns audio to original volume.
 Check if Spotify is running.
 
 ```javascript
-var spotify = require('spotify-node-applescript');
+var spotify = require("spotify-node-applescript");
 
-spotify.isRunning(function(err, isRunning){
-    console.log(isRunning); // true
+spotify.isRunning(function (err, isRunning) {
+  console.log(isRunning); // true
 });
 ```
 
 ### isRepeating(callback)
-Is repeating on or off?
-```js
-var spotify = require('spotify-node-applescript');
 
-spotify.isRepeating(function(err, shuffling){
-    console.log(shuffling); // true || false
+Is repeating on or off?
+
+```js
+var spotify = require("spotify-node-applescript");
+
+spotify.isRepeating(function (err, shuffling) {
+  console.log(shuffling); // true || false
 });
 ```
 
 ### isShuffling(callback)
-Is shuffling on or off?
-```js
-var spotify = require('spotify-node-applescript');
 
-spotify.isShuffling(function(err, shuffling){
-    console.log(shuffling); // true || false
+Is shuffling on or off?
+
+```js
+var spotify = require("spotify-node-applescript");
+
+spotify.isShuffling(function (err, shuffling) {
+  console.log(shuffling); // true || false
 });
 ```
-### setRepeating(repeating/\**boolean*\*/, callback)
+
+### setRepeating(repeating/\*_boolean_\*/, callback)
+
 Sets repeating on or off
 
-### setShuffling(shuffling/\**boolean*\*/, callback)
+### setShuffling(shuffling/\*_boolean_\*/, callback)
+
 Sets shuffling on or off
 
 ### toggleRepeating(callback)
+
 Toggles repeating
 
 ### toggleShuffling(callback)
+
 Toggles shuffling
 
 ## Contributors
 
-* [Robin Mehner](https://github.com/rmehner)
-* [Thorsten Ball](https://github.com/mrnugget)
-* [Paul Marbach](https://github.com/fastfrwrd)
+- [Robin Mehner](https://github.com/rmehner)
+- [Thorsten Ball](https://github.com/mrnugget)
+- [Paul Marbach](https://github.com/fastfrwrd)
 
 ## License
 
