@@ -2,6 +2,7 @@ var spotify = require('../lib/spotify-node-applescript.js');
 var expect = require('chai').expect;
 
 var COLDPLAY_TROUBLE_ID = 'spotify:track:0R8P9KfGJCDULmlEoBagcO'
+var COLDPLAY_TROUBLE_PLAYTIME_SEC = 273
 
 describe('Spotify Controller', function () {
 
@@ -200,6 +201,60 @@ describe('Spotify Controller', function () {
                             expect(state.volume).to.be.within(45, 55);
                             done();
                         });
+                    });
+                });
+            });
+        });
+    });
+
+    // Seek forward and backward
+
+    it('should seek forward', function (done) {
+        // first do jumpTo 0 in case position is at the max
+        spotify.jumpTo(0, function () {
+            spotify.seekForward(5, function () {
+                spotify.getState(function (error, state) {
+                    expect(state.position).to.be.gte(5);
+                    done();
+                });
+            });
+        });
+    });
+
+    it('should seek backward', function (done) {
+        // first do jumpTo 15 in case position is at 0
+        spotify.jumpTo(15, function () {
+            spotify.seekBackward(5, function () {
+                spotify.getState(function (error, state) {
+                    expect(state.position).to.be.gte(10);
+                    done();
+                });
+            });
+        });
+    });
+
+    it('should set position to 0 on seeking foward exceeding max', function (done) {
+        // first do jumpTo to emulate overflow when seeking forward
+        spotify.jumpTo(COLDPLAY_TROUBLE_PLAYTIME_SEC - 3, function () {
+            spotify.getState(function (error, state) {
+                spotify.seekForward(5, function () {
+                    spotify.getState(function (error, state) {
+                        expect(state.position).to.equal(0);
+                        done();
+                    });
+                });
+            });
+        });
+    });
+
+    it('should set position to 0 on seeking foward exceeding min', function (done) {
+        // first do jumpTo to emulate overflow when seeking backward
+        spotify.jumpTo(2, function () {
+            spotify.getState(function (error, state) {
+                spotify.seekBackward(5, function () {
+                    spotify.getState(function (error, state) {
+                        expect(state.position).to.equal(0);
+                        done();
                     });
                 });
             });
