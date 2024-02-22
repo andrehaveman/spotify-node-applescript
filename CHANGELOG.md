@@ -1,3 +1,9 @@
+# 1.1.2 (2024-02-22)
+
+- Removed undocumented 'open' method, because it was vulnerable to arbitrary command injection
+
+This method was vulnerable to arbitrary command injection
+
 # 1.1.1 (2018-01-16)
 
 - Fixed volume overflow issue.
